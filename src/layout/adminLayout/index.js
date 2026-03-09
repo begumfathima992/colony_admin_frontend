@@ -8,6 +8,8 @@ const AdminLayout = ({ isHeader, navLink, component }) => {
   const navigate = useNavigate()
   const { adminSidebar } = useSelector((state) => state?.adminSidebarList)
   const activeSidebar = adminSidebar.filter(item => item.isActive);
+
+  console.log(adminSidebar,"adminSidebar")
   const updateInnerTab = (child) => {
     navigate(child.route)
     dispatch(currentSidebar(child?.route));

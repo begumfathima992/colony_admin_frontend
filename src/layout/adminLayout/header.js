@@ -31,7 +31,7 @@ function Header({
       
       <div className='flex flex-col gap-2'>
         <div className="fixed z-30 w-full md:w-[calc(100%-220px)] ">
-          <div className='bg-gradient-to-r flex px-0 md:px-3 items-center justify-between from-blue-500 to-blue100 h-12 w-full'>
+          <div className='bg-gradient-to-r flex px-0 md:px-3 items-center justify-between bg-yellow-50 to bg-yellow-50  h-12 w-full'>
             <div className="md:hidden block">
               <div className="flex w-44 relative items-center bg-blue100  justify-center h-12">
                 <img
@@ -73,7 +73,7 @@ function Header({
           </div>
         </div>
         <div className="px-2 mt-14">
-          <button className="flex items-center w-fit gap-2 px-3 py-2 bg-gradient-to-r from-blue-700 to-blue-900 text-white rounded-md shadow hover:brightness-110 transition-all">
+          <button className="flex items-center w-fit gap-2 px-3 py-2 bg-gradient-to-r from-gold-700 to-gold-900 text-white rounded-md shadow hover:brightness-110 transition-all">
             <FaWallet className="text-secondary text-lg" />
             <span className="font-medium text-sm">{breadcrums?.title}</span>
           </button>

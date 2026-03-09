@@ -13,8 +13,9 @@ import {
 import { FaFilter } from "react-icons/fa";
 export function CustomTable({ headers, children, isFilter = false }) {
   return (
-    <div className='shadow'>
-      {isFilter && <Button variant='contained' size='small' startIcon={<FaFilter size={15} />} className='!capitalize !bg-blue-800 !m-2'>Filter</Button>}
+    <div>
+      {isFilter && 
+      <Button variant='contained' size='small' startIcon={<FaFilter size={15} />} className='!capitalize !bg-blue-800 !m-2'>Filter</Button>}
       <TableContainer className='!shadow-none' component={Paper}>
         <Table sx={{ borderSpacing: '0 8px', borderCollapse: 'separate' }} size="small">
           <TableHead >

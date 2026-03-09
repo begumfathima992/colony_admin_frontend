@@ -19,6 +19,7 @@ import EmailTemplate from "../pages/admin/emailModule/emailTemplate";
 import ImageUpload from "../pages/admin/emailModule/imageUpload";
 import PromotionalEmail from "../pages/admin/emailModule/promotionalEmail";
 import Enquiry from "../pages/admin/leadManagement/enquiry";
+import ReservationList from "../pages/admin/reservation/reservationList";
 import TradeBotSettings from "../pages/admin/systemSetting/tradeBotSettings";
 import BuyCoin from "../pages/admin/tradeMaster/buyCoin";
 import BuyOrderClosedHistory from "../pages/admin/tradeMaster/buyOrderClosedHistory";
@@ -38,6 +39,7 @@ import DebitWallet from "../pages/admin/walletManagement/debitWallet";
 import TransferReport from "../pages/admin/walletManagement/transferReport";
 import UserWalletAddress from "../pages/admin/walletManagement/userWalletAddress";
 import WithdrawelReport from "../pages/admin/walletManagement/withdrawalReport";
+import  ContactUs from "../pages/admin/contact/ContactUs";
 export const adminRoutes = [
     {
         id:1,
@@ -320,8 +322,27 @@ export const adminRoutes = [
         navItem: "Enquiry",
         isHeader: false,
     },
+
+    {
+        id:41,
+        path: "/reservation",
+        component: <ReservationList />,
+        navItem: "Reservation List",
+        isHeader: false,
+    },
+     {
+        id:42,
+        path: "/contact",
+        component: <ContactUs />,
+        navItem: "Contact",
+        isHeader: false,
+    },
     
 ]
+
+
+
+
 
 
 
