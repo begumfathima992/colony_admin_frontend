@@ -14,50 +14,7 @@ export const sidebarList = [
     title: 'Users',
     route: "/admin/user-list",
     isActive: false,
-    // children: [
-    //   {
-    //     id: 1,
-    //     route: '/admin/pending-user-list',
-    //     title: 'Pending User List',
-    //     isActive: true
-    //   },
-    //   {
-    //     id: 2,
-    //     route: '/admin/user-list',
-    //     title: 'Users List',
-    //     isActive: false
-    //   },
-    //   {
-    //     id: 3,
-    //     route: '/admin/kyc-list',
-    //     title: 'KYC List',
-    //     isActive: false
-    //   },
-    //   {
-    //     id: 4,
-    //     route: '/admin/block-user',
-    //     isActive: false,
-    //     title: 'Block User',
-    //   },
-    //   {
-    //     id: 5,
-    //     route: "/admin/account-close-list",
-    //     isActive: false,
-    //     title: 'Account Close List',
-    //   },
-    //   {
-    //     id: 6,
-    //     route: "/admin/secret pin List",
-    //     isActive: false,
-    //     title: 'Secret Pin List',
-    //   },
-    //   {
-    //     id: 7,
-    //     route: "/admin/upper-bank-list",
-    //     isActive: false,
-    //     title: 'Upper Bank List',
-    //   },
-    // ],
+
   },
 
   {
@@ -67,13 +24,13 @@ export const sidebarList = [
     title: 'Reservation',
     isActive: false
   },
-  {
+{
     id: 4,
-    route: '/admin/contact',
+    route: '/admin/contact', // <--- MUST be this, NOT API_URLs.contact
     icons: FaUserMd,
     title: 'Contact Us',
-    // isActive: false
-  }
+    isActive: false
+ }
 
   // /reservation
   // {

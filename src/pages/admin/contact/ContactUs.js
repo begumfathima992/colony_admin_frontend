@@ -37,7 +37,10 @@ const ContactUs = () => {
         e.preventDefault();
         setIsLoader(true);
 
-        const payload = { ...formData, role: userType };
+       const payload = { 
+    ...formData, 
+    userType: userType // The backend needs 'userType', not 'role'
+};
 
         try {
             // Reference to your API pattern:
@@ -73,7 +76,7 @@ const ContactUs = () => {
                         </Typography>
                     </Box>
 
-                    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1 }}>
+                    {/* <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1 }}>
                         <Typography variant="caption" fontWeight="bold" color="primary">
                             IDENTIFY YOURSELF
                         </Typography>
@@ -87,7 +90,7 @@ const ContactUs = () => {
                             <ToggleButton value="User" sx={{ px: 3 }}>Standard User</ToggleButton>
                             <ToggleButton value="Developer" sx={{ px: 3 }}>Apple Developer</ToggleButton>
                         </ToggleButtonGroup>
-                    </Box>
+                    </Box> */}
 
                     <form onSubmit={handleSubmit}>
                         <Stack spacing={2}>
@@ -152,12 +155,12 @@ const ContactUs = () => {
                     <Box sx={{ pt: 2, borderTop: '1px solid #f0f0f0', display: 'flex', justifyContent: 'center', gap: 4 }}>
                         <Box display="flex" alignItems="center" gap={1}>
                             <IoMail color="#666" />
-                            <Typography variant="body2" color="text.secondary">support@app.com</Typography>
+                            <Typography variant="body2" color="text.secondary">support@paprikaventures.com</Typography>
                         </Box>
-                        <Box display="flex" alignItems="center" gap={1}>
+                        {/* <Box display="flex" alignItems="center" gap={1}>
                             <IoCall color="#666" />
                             <Typography variant="body2" color="text.secondary">+1 234 567 890</Typography>
-                        </Box>
+                        </Box> */}
                     </Box>
                 </Stack>
             </Paper>

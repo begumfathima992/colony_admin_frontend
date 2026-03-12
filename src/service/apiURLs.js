@@ -5,5 +5,5 @@ export const API_URLs = {
   getReservation: "/reservation/fetch",
   getReservationFindById: "/reservation/get_by_user_id",
   getCancelReservations:"/reservation/get_cancel_reservations",
-   contact: "/admin/contact",
+  contact: "/contact/submit",
 };

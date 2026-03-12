@@ -330,13 +330,12 @@ export const adminRoutes = [
         navItem: "Reservation List",
         isHeader: false,
     },
-     {
-        id:42,
-        path: "/contact",
-        component: <ContactUs />,
-        navItem: "Contact",
-        isHeader: false,
-    },
+{
+    id: 42,
+    path: "/contact", // App.js makes this /admin/contact
+    component: <ContactUs />,
+    navItem: "Contact",
+}
     
 ]
 

@@ -40,11 +40,13 @@ export const getCancelReservation = async (search = "", page = 1, limit = 10) =>
         return error
     }
 };
-export const contactUs = async (search = "") => {
+export const contactUs = async (payload) => {
     try {
-        const response = await apiInstance.get(`${API_URLs?.contact}`);
-        return response.data;
+        // You must pass 'payload' as the second argument in apiInstance.post
+        const response = await apiInstance.post(`${API_URLs?.contact}`, payload);
+        return response; // Return the full response so the component can check statusCode
     } catch (error) {
-        return error
+        console.error("Service Error:", error);
+        return error.response; // Return the error response so we can see why it failed
     }
 };
