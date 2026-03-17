@@ -1,17 +1,17 @@
+import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router";
 
-import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router';
-
-import { walletRoutes } from './routes/walletRoute';
-import WalletLayout from './layout/usersLayout/walletLayout';
-import { useEffect, useState } from 'react';
-import loaderGif from "./assets/images/loader.gif"
-import AdminLayout from './layout/adminLayout';
-import { adminRoutes } from './routes/adminRoutes';
-import NotFound from './utils/NotFound';
+import { walletRoutes } from "./routes/walletRoute";
+import WalletLayout from "./layout/usersLayout/walletLayout";
+import { useEffect, useState } from "react";
+import loaderGif from "./assets/images/loader.gif";
+import AdminLayout from "./layout/adminLayout";
+import { adminRoutes } from "./routes/adminRoutes";
+import NotFound from "./utils/NotFound";
 import { Provider } from "react-redux";
 import store, { persistor } from "./store/store";
 import { PersistGate } from "redux-persist/integration/react";
+import ContactUs from "./pages/admin/contact/ContactUs";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -20,7 +20,7 @@ function App() {
     // 3 seconds ka delay
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 3000);  
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -38,7 +38,8 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="*" element={<NotFound />} />
-           
+            <Route path="/" element={<ContactUs />} />
+
             {walletRoutes.map((route) => {
               return (
                 <Route
@@ -57,7 +58,6 @@ function App() {
               );
             })}
 
-
             {adminRoutes.map((route) => {
               return (
                 <Route
@@ -75,8 +75,6 @@ function App() {
                 />
               );
             })}
-
-
           </Routes>
         </BrowserRouter>
       </PersistGate>

@@ -1,36 +1,41 @@
-import { FaUserAlt, FaUsers, FaUsersCog, FaWallet,FaUserMd } from "react-icons/fa";
+import {
+  FaUserAlt,
+  FaUsers,
+  FaUsersCog,
+  FaWallet,
+  FaUserMd,
+} from "react-icons/fa";
 
 export const sidebarList = [
   {
     id: 1,
-    route: '/admin/dashboard',
+    route: "/admin/dashboard",
     icons: FaUserAlt,
-    title: 'Dashboard',
-    isActive: true
+    title: "Dashboard",
+    isActive: true,
   },
   {
     id: 2,
     icons: FaUsersCog,
-    title: 'Users',
+    title: "Users",
     route: "/admin/user-list",
     isActive: false,
-
   },
 
   {
     id: 3,
-    route: '/admin/reservation',
+    route: "/admin/reservation",
     icons: FaUserAlt,
-    title: 'Reservation',
-    isActive: false
+    title: "Reservation",
+    isActive: false,
   },
-{
+  {
     id: 4,
-    route: '/admin/contact', // <--- MUST be this, NOT API_URLs.contact
+    route: "/admin/contact", // <--- MUST be this, NOT API_URLs.contact
     icons: FaUserMd,
-    title: 'Contact Us',
-    isActive: false
- }
+    title: "Contact Us",
+    isActive: false,
+  },
 
   // /reservation
   // {
@@ -377,11 +382,6 @@ export const sidebarList = [
   //       isActive: true
   //     },
 
-
   //   ]
   // }
-
 ];
-
-
-
