@@ -1,0 +1,21 @@
+services:
+  main-api:
+    build: ./colonybackend
+    ports:
+      - "2000:2000"
+    env_file: ./colonybackend/.env
+
+  admin-api:
+    build: ./colonybackendadmin
+    ports:
+      - "2001:2001"
+    env_file: ./colonybackendadmin/.env
+
+  frontend:
+    build: ./exchanger
+    ports:
+      - "3000:80"
+    environment:
+      - REACT_APP_ADMIN_API_URL=http://localhost:2001
+    depends_on:
+      - admin-api
