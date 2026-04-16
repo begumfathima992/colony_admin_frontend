@@ -1,22 +1,14 @@
 import React, { useState } from 'react';
 import { 
-    Box, 
-    TextField, 
-    Button, 
-    Typography, 
-    Container, 
-    Paper, 
-    Stack, 
-    ToggleButton, 
-    ToggleButtonGroup,
-    CircularProgress 
+    Box, TextField, Button, Typography, Container, 
+    Paper, Stack, CircularProgress 
 } from '@mui/material';
-import { IoSend, IoMail, IoCall } from "react-icons/io5";
-import {contactUs } from "../../../service/reservationService"
+import { IoSend, IoMail } from "react-icons/io5";
+import { contactUs } from "../../../service/reservationService";
 
 const ContactUs = () => {
     const [isLoader, setIsLoader] = useState(false);
-    const [userType, setUserType] = useState('User'); // 'User' or 'Developer'
+    const [userType] = useState('User'); 
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -29,35 +21,33 @@ const ContactUs = () => {
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-    const handleUserType = (event, newType) => {
-        if (newType !== null) setUserType(newType);
-    };
-
-    const handleSubmit = async (e) => {
+   const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoader(true);
 
-       const payload = { 
-    ...formData, 
-    userType: userType // The backend needs 'userType', not 'role'
-};
+        const payload = { ...formData, userType };
 
         try {
-            // Reference to your API pattern:
             const response = await contactUs(payload);
             
-            // Simulating your reference response structure:
-            // const response = { statusCode: 200, message: "Success" }; 
+            // LOG THIS to see exactly what your API returns
+            console.log("Full API Response:", response);
 
-            if (response?.statusCode === 200) {
-                alert("Thank you! Your message has been sent.");
+            // Logic to check for success
+            // Some services return the raw JSON, others wrap it in { data: ... }
+            const result = response?.data || response; 
+
+            if (result?.success === true || result?.statusCode === 200) {
+                // Use the message from the backend directly
+                alert(result.message || "Message sent successfully!");
                 setFormData({ name: '', email: '', subject: '', message: '' });
             } else {
-                alert("Failed to send message. Please try again.");
+                // This triggers if success is false even if status is 200
+                alert(result?.message || "Failed to send message.");
             }
         } catch (error) {
-            console.error("API Error:", error);
-            alert("Something went wrong.");
+            console.error("Connection Error:", error);
+            alert("Something went wrong with the server connection.");
         } finally {
             setIsLoader(false);
         }
@@ -76,59 +66,12 @@ const ContactUs = () => {
                         </Typography>
                     </Box>
 
-                    {/* <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1 }}>
-                        <Typography variant="caption" fontWeight="bold" color="primary">
-                            IDENTIFY YOURSELF
-                        </Typography>
-                        <ToggleButtonGroup
-                            value={userType}
-                            exclusive
-                            onChange={handleUserType}
-                            size="small"
-                            color="primary"
-                        >
-                            <ToggleButton value="User" sx={{ px: 3 }}>Standard User</ToggleButton>
-                            <ToggleButton value="Developer" sx={{ px: 3 }}>Apple Developer</ToggleButton>
-                        </ToggleButtonGroup>
-                    </Box> */}
-
                     <form onSubmit={handleSubmit}>
                         <Stack spacing={2}>
-                            <TextField
-                                fullWidth
-                                label="Full Name"
-                                name="name"
-                                value={formData.name}
-                                onChange={handleInputChange}
-                                required
-                            />
-                            <TextField
-                                fullWidth
-                                label="Email Address"
-                                name="email"
-                                type="email"
-                                value={formData.email}
-                                onChange={handleInputChange}
-                                required
-                            />
-                            <TextField
-                                fullWidth
-                                label="Subject"
-                                name="subject"
-                                value={formData.subject}
-                                onChange={handleInputChange}
-                                required
-                            />
-                            <TextField
-                                fullWidth
-                                label="How can we help?"
-                                name="message"
-                                multiline
-                                rows={4}
-                                value={formData.message}
-                                onChange={handleInputChange}
-                                required
-                            />
+                            <TextField fullWidth label="Full Name" name="name" value={formData.name} onChange={handleInputChange} required />
+                            <TextField fullWidth label="Email Address" name="email" type="email" value={formData.email} onChange={handleInputChange} required />
+                            <TextField fullWidth label="Subject" name="subject" value={formData.subject} onChange={handleInputChange} required />
+                            <TextField fullWidth label="How can we help?" name="message" multiline rows={4} value={formData.message} onChange={handleInputChange} required />
 
                             <Button
                                 type="submit"
@@ -136,31 +79,18 @@ const ContactUs = () => {
                                 size="large"
                                 disabled={isLoader}
                                 startIcon={isLoader ? <CircularProgress size={20} color="inherit" /> : <IoSend />}
-                                sx={{ 
-                                    py: 1.5, 
-                                    textTransform: 'none', 
-                                    fontSize: '1rem',
-                                    borderRadius: 2,
-                                    backgroundColor: userType === 'Developer' ? '#2c3e50' : '#1976d2',
-                                    '&:hover': {
-                                        backgroundColor: userType === 'Developer' ? '#1a252f' : '#115293'
-                                    }
-                                }}
+                                sx={{ py: 1.5, textTransform: 'none', borderRadius: 2 }}
                             >
                                 {isLoader ? 'Sending...' : 'Send Message'}
                             </Button>
                         </Stack>
                     </form>
 
-                    <Box sx={{ pt: 2, borderTop: '1px solid #f0f0f0', display: 'flex', justifyContent: 'center', gap: 4 }}>
+                    <Box sx={{ pt: 2, borderTop: '1px solid #f0f0f0', display: 'flex', justifyContent: 'center' }}>
                         <Box display="flex" alignItems="center" gap={1}>
                             <IoMail color="#666" />
-                            <Typography variant="body2" color="text.secondary">support@paprikaventures.com</Typography>
+                            <Typography variant="body2" color="text.secondary">support.paprikaventures@gmail.com</Typography>
                         </Box>
-                        {/* <Box display="flex" alignItems="center" gap={1}>
-                            <IoCall color="#666" />
-                            <Typography variant="body2" color="text.secondary">+1 234 567 890</Typography>
-                        </Box> */}
                     </Box>
                 </Stack>
             </Paper>
