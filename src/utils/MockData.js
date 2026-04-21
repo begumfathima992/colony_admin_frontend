@@ -33,12 +33,6 @@ export const sidebarList = [
     id: 4,
     route: "/admin/contact", // <--- MUST be this, NOT API_URLs.contact
     icons: FaUserMd,
-<<<<<<< HEAD
-    title: "Contact Us",
-    isActive: false,
-  },
-
-=======
     title: 'Contact Us',
     isActive: false
  },
@@ -49,7 +43,6 @@ export const sidebarList = [
     title: 'Contact Us22',
     isActive: false
  }
->>>>>>> 330f6db (admin changes)
   // /reservation
   // {
   //   id: 3,
