@@ -4,7 +4,7 @@ import axios from "axios";
 
 // export const baseURL="https://a2c8feb53dd0.ngrok-free.app"
 // export const baseURL="http://localhost:2001"
-export const baseURL = "https://colony-admin-backend.paprikaventures.com";
+export const baseURL = "http://colony-admin-backend.paprikaventures.com";
 
 const apiInstance = axios.create({
   baseURL: baseURL,
