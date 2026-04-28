@@ -155,7 +155,7 @@ const ContactUs = () => {
                     <Box sx={{ pt: 2, borderTop: '1px solid #f0f0f0', display: 'flex', justifyContent: 'center', gap: 4 }}>
                         <Box display="flex" alignItems="center" gap={1}>
                             <IoMail color="#666" />
-                            <Typography variant="body2" color="text.secondary">support@paprikaventures.com</Typography>
+                            <Typography variant="body2" color="text.secondary">suppot.paprikaventures@gmail.com</Typography>
                         </Box>
                         {/* <Box display="flex" alignItems="center" gap={1}>
                             <IoCall color="#666" />
